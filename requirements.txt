@@ -1,0 +1,6 @@
+Flask==2.0.1
+sqlite3==2.6.0
+jsonify==0.5
+unittest==2.7.3
+requests==2.26.0
+praw==7.4.0
