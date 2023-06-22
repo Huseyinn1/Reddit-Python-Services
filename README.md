@@ -39,6 +39,7 @@ Aşağıdaki teknolojiler, Python Reddit Crawler projesinde kullanılmıştır:
 - Flask: Flask web framework'ü, uygulamanın API'sini oluşturmak için kullanılmıştır.
 - Reddit API: Proje, Reddit API'sini kullanarak subredditlerdeki postları takip etmektedir.
 - Docker: Uygulama, Docker kullanılarak konteynerize edilmiştir.
+- SQLAlchemy: Veritabanı işlemleri için ORM (Object-Relational Mapping) kütüphanesi.
 - Diğer bağımlılıklar: Proje, requirements.txt dosyasında listelenen diğer bağımlılıklara sahiptir.
 
 
