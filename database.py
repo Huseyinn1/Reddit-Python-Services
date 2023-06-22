@@ -1,21 +1,26 @@
-import sqlite3
+from sqlalchemy import create_engine, Column, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+
+class Post(Base):
+    __tablename__ = 'posts'
+    id = Column(String, primary_key=True)
+    title = Column(String)
+    content = Column(String)
 
 def create_table():
-
-    conn = sqlite3.connect('reddit_posts.db')
-    c = conn.cursor()
-    
-
-    c.execute('''CREATE TABLE IF NOT EXISTS posts
-                 (id TEXT PRIMARY KEY, title TEXT, content TEXT)''')
-    conn.commit()
-    conn.close()
+    engine = create_engine('sqlite:///reddit_posts.db')
+    Base.metadata.create_all(engine)
 
 def insert_post(post_id, title, content):
-
-    conn = sqlite3.connect('reddit_posts.db')
-    c = conn.cursor()
+    engine = create_engine('sqlite:///reddit_posts.db')
+    Session = sessionmaker(bind=engine)
+    session = Session()
     
-    c.execute('INSERT INTO posts VALUES (?, ?, ?)', (post_id, title, content))
-    conn.commit()
-    conn.close()
+    new_post = Post(id=post_id, title=title, content=content)
+    session.add(new_post)
+    session.commit()
+    
+    session.close()
