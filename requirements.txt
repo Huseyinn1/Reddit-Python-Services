@@ -4,3 +4,4 @@ jsonify==0.5
 unittest==2.7.3
 requests==2.26.0
 praw==7.4.0
+SQLAlchemy==1.4.23
